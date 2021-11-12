@@ -2,7 +2,7 @@
 #include <stdlib.h>
 int main()
 {
-    int i, j, n, m, max = 0, min, mn, mx;
+    int i, j, n, m, max, min, mn, mx;
     int *mas = NULL; // указатель на массив
     printf("Введите количество строк N: ");
     scanf("%d", &n);
@@ -14,10 +14,14 @@ int main()
         {
         for (j = 0; j < m; j++) // перебирает каждый элемент строки
             {
-            printf("Введите элемент матрицы %dx%d = ", i, j); // ввод элементов
+            printf("Введите элемент %dx%d = ", i, j); // ввод элементов
             scanf("%d", (mas + i * m + j));
             }
     }
+    min = *(mas);
+    printf ("%d", min);
+    max = *(mas+i);
+    printf ("%d", max);
     printf("\nМатрица %dx%d:\n", n, m); // вывод матрицы
     for (i = 0; i < n; i++)
     {
