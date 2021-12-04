@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+double yx (double x)
+{
+    return (((x+1)*sinh(sqrt(x))/sqrt(x)-cosh(sqrt(x))))/4.0;
+}
+double sx (double x)
+{
+    double p, s;
+    int n, i;
+    p = 1;
+    s = 0;
+    n=120;
+    for (i = 1; i <= n ; i++)
+    {
+        p *= (x / ( 2 * i *( 2 * i +1)));
+        s += (p * pow(i, 2));
+    }
+    return s;
+}
+int main()
+{
+    double g, m;
+    for(g=0.2; g<=0.8; g+=0.06)
+    {
+        printf(" Y(x)=%lf\t", yx(g));
+        printf("S(x)=%lf\t", sx(g));
+        m = fabs(sx(g) - yx(g));
+        printf("|s-y|=%lf\n", m);
+    }
+    int k=1;
+    if(m>0.01)
+    {
+        k++;
+        printf("\nИтерация %d\n", k);
+    }
+    else
+    {
+        printf("Требуется итераций %d\n", k);
+    }
+}
