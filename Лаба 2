@@ -1,3 +1,7 @@
+//ln(f(x)), x^3>0
+//tg(x^3)+ f(x), x^3<0
+//иначе другая функция
+
 #include <iostream.h>
 #include <math.h>
 #include <stdio.h>
