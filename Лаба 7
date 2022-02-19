@@ -6,7 +6,7 @@
 #include <stdlib.h>
 struct univer
 {
-    char name[100];
+    char *name;
     int ball1;
     int ball2;
     int ball3;
@@ -20,12 +20,19 @@ int main()
     printf("\n");
     struct univer *student;
     student = (struct univer *) malloc(n*sizeof(struct univer));
+    if(student ==NULL)
+    {
+        printf("\nПамять не выделена");
+        return 0;
+    }
     for(int i=0; i<n; i++)
     {
+        int j=0;
         printf("Введите ФИО: ");
-        rewind(stdin);
-        //scanf("%s",student[i].name);
-        fgets(student[i].name, 100, stdin);
+        fflush(stdin);
+        student[i].name = (char*)malloc(1);
+        while ((student[i].name[j++] =getchar()) != '\n')
+            student[i].name = (char*) realloc(student[i].name, j+1);
         printf("Введите оценку 1: ");
         scanf("%d", &student[i].ball1);
         while (student[i].ball1 > 10)
